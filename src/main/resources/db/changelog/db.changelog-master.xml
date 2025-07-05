@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet  id="1"  author="Gaurab Dahit">
+        <createTable  tableName="user_profile">
+            <column  name="id"  type="bigint"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="email"  type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column  name="gender"  type="varchar(20)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="age"  type="int">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="height" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="chest_size" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="waist_size" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="skin_tone" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="body_size" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="face_shape" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hair_length" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hair_texture" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
