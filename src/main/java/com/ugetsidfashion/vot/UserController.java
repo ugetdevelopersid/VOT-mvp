@@ -14,10 +14,12 @@ import java.util.Optional;
 public class UserController {
     private final UserProfileRepository userProfileRepository;
     private final GarmetExplorer garmetExplorer;
+    private final PromptGenerator promptGenerator;
 
-    public UserController(UserProfileRepository userProfileRepository, GarmetExplorer garmetExplorer) {
+    public UserController(UserProfileRepository userProfileRepository, GarmetExplorer garmetExplorer, PromptGenerator promptGenerator) {
         this.userProfileRepository = userProfileRepository;
         this.garmetExplorer = garmetExplorer;
+        this.promptGenerator = promptGenerator;
     }
 
     @PostMapping
@@ -31,6 +33,19 @@ public class UserController {
         userProfile = userProfileRepository.save(userProfile);
 
         return ResponseEntity.ok(userProfile);
+    }
+
+    @GetMapping("/prompt")
+    public ResponseEntity<?> getPrompt(@RequestBody PromptRequest promptRequest) {
+        // Get user profile
+        Optional<UserProfile> userProfile = userProfileRepository.findByEmail(promptRequest.email());
+        if (userProfile.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        String prompt = promptGenerator.generatePrompt(userProfile.get());
+
+        return ResponseEntity.ok(Map.of("prompt", prompt));
     }
 
     @PostMapping(value = "/tryOn", consumes = "multipart/form-data")
@@ -60,5 +75,8 @@ public class UserController {
         return ResponseEntity.ok()
                 .header("Content-Type", "image/png")
                 .body(generatedImage);
+    }
+
+    public record PromptRequest(String email) {
     }
 }
