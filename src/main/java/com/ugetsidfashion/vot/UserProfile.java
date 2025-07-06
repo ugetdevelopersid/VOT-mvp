@@ -11,6 +11,7 @@ import org.hibernate.annotations.NaturalId;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class UserProfile {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private long id;
 

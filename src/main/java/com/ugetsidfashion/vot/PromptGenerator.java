@@ -7,30 +7,33 @@ import java.util.Map;
 @Component
 public class PromptGenerator {
     public static final String PROMPT_FORMAT = """
-            Generate a photorealistic image of full-body fashion Mannequin. The model is in a minimal studio with a soft, neutral grey background.
-            The character model's form must be rendered with strict adherence to the following physical parameters:
-            [BODY_PROFILE]. The mannequin has [HAIR_LENGTH], [HAIR_TYPE], [HAIR_COLOUR] hair. The hairstyle is elegant and
-            styled to complement the garment. The mannequin has [SKIN_COLOUR] skin colour. The primary task is to realistically
-            drape the garment from the [Input Garment Image] onto the defined character model. To achieve a realistic fit, you
-            must follow this chain of reasoning: First, analyze the [Input Garment Image]. Identify its key characteristics:
-            its garment category (e.g., dress, top, pants), its silhouette (e.g., A-line, slim-fit, oversized), its material
-            properties (e.g., structured like denim, fluid like silk, stiff like leather), and its key details (e.g.,
-            sleeveless, V-neck, cropped length). Next, consider the [BODY_PROFILE]. You have been given a detailed description
-            of the model's unique build, shape, and proportions. Then, determine the realistic fit. Based on your analysis of
-            the garment and the body, simulate how the garment would physically interact with the form. Your simulation must
+            Generate a photorealistic image of a full-body fashion Mannequin. The model is in a minimal studio with a
+            soft, neutral grey background. The character model's form must be rendered with strict adherence to the following physical parameters:
+                [BODY_PROFILE]
+            The mannequin has [HAIR_LENGTH], [HAIR_TYPE], [HAIR_COLOUR] hair. The hairstyle is elegant and styled to complement the garment.
+            The mannequin has [SKIN_COLOUR] skin colour.
+            
+            The primary task is to realistically drape the garment from the [Input Garment Image] onto the defined character model.
+            To achieve a realistic fit, you must follow this chain of reasoning: First, analyze the [Input Garment Image].
+            Identify its key characteristics: its garment category (e.g., dress, top, pants), its silhouette (e.g., A-line, slim-fit, oversized), its material
+            properties (e.g., structured like denim, fluid like silk, stiff like leather), and its key details (e.g., sleeveless, V-neck, cropped length).
+            
+            Next, consider the physical parameters given above. You have been given a detailed description of the model's unique build, shape, and proportions.
+            Then, determine the realistic fit. Based on your analysis of the garment and the body, simulate how the garment would physically interact with the form. Your simulation must
             respect the principles of gravity, tension, and fabric properties. For example, a fitted garment over a fuller curve
             must show appropriate, subtle tension, while a fluid fabric should conform to and drape over the body's contours.
-            The final drape must look natural and physically plausible. Finally, render the complete image according to this
-            determined fit. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] posture should convey confidence through
-            [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] body language. Full body shot, eye-level perspective. The final image
-            aspect ratio must be --ar 9:16 for a vertical, mobile-friendly format. The subject is to be perfectly centered
-            in the frame. Aesthetic: Professional e-commerce photography, hyper-realistic, clean, and cinematic.
-            Lighting: Soft, multi-source studio lighting that mimics diffuse natural light, creating gentle shadows
-            that reveal fabric texture and body contour. Detail: 8K UHD, tack-sharp focus, hyper-detailed fabric weave,
-            realistic material simulation, photorealistic skin texture. CRITICAL DIRECTIVE: Maintain anatomically correct human
-            proportions as defined. The focus is on the accuracy of the body shape and the realism of the garment's fit. AVOID:
-            showing the front of the face, distorted or mutated anatomy, unrealistic body proportions, text, watermarks,
-            signatures, logos, blur, cartoonish features.
+            The final drape must look natural and physically plausible.
+            
+            Finally, render the complete image according to this determined fit.
+            [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] posture should convey confidence through
+            [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] body language. Full body shot, eye-level perspective.
+            
+            The final image aspect ratio must be --ar 9:16 for a vertical, mobile-friendly format. The subject is to be perfectly centered in the frame.
+            Aesthetic: Professional e-commerce photography, hyper-realistic, clean, and cinematic.
+            Lighting: Soft, multi-source studio lighting that mimics diffuse natural light, creating gentle shadows that reveal fabric texture and body contour.
+            Detail: 8K UHD, tack-sharp focus, hyper-detailed fabric weave, realistic material simulation, photorealistic skin texture.
+            CRITICAL DIRECTIVE: Maintain anatomically correct human proportions as defined. The focus is on the accuracy of the body shape and the realism of the garment's fit.
+            AVOID: showing the front of the face, distorted or mutated anatomy, unrealistic body proportions, text, watermarks, signatures, logos, blur, cartoonish features.
             """;
 
     public static final Map<String, String> BUILD_DESCRIPTIONS = Map.of(
@@ -50,11 +53,11 @@ public class PromptGenerator {
             Map.entry("Rectangle", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Rectangle', characterized by bust, waist, and hip measurements that are relatively similar, creating a straight, athletic silhouette with minimal waist definition."),
             Map.entry("Diamond", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Diamond', characterized by hips that are broader than the shoulders and a waist that is the fullest point of the torso."),
             Map.entry("Spoon", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Spoon', similar to a Pear but characterized by a distinct 'shelf' where the hips extend from a defined waist."),
-            Map.entry("Column", "[GENDER_SUBJECT_PRONOUN] geometric shape is a silhouette build which is a chic and modelesque Column. Bust, waist, and hips are beautifully aligned with minimal differentiation, creating a strong, linear frame. This balanced, athletic line is a versatile canvas, perfect for architectural shapes, dramatic drapes, and embracing bold, oversized styles"),
-            Map.entry("Cornet Silhouette", "[GENDER_SUBJECT_PRONOUN] geometric shape is a Cornet Silhouette build, which is an especially pronounced hourglass figure. While bust and hips are in beautiful balance, waist is exceptionally defined. This creates a striking, vintage-inspired curve that is powerful and incredibly rare."),
-            Map.entry("Teardrop", "[GENDER_SUBJECT_PRONOUN] geometric shape is a beautiful Teardrop. Proportions feature elegantly defined shoulders and a slender upper body that gracefully widens to fullest point at the hips. This creates a strong, grounded, and feminine silhouette with a naturally low center of gravity."),
-            Map.entry("Athletic Frame", "[GENDER_SUBJECT_PRONOUN] geometric shape is a powerful Athletic Frame. This silhouette is defined by strong, broad shoulders and a fuller bust that tapers to a leaner lower body. Dynamic 'V' shape is celebrated for its commanding presence and is a testament to strength and vitality."),
-            Map.entry("Lollipop Silhouette", "[GENDER_SUBJECT_PRONOUN] geometric shape is a proportions that align with the Lollipop Silhouette, a distinctive shape celebrated in high-fashion. It's characterized by a slender frame with lean hips and long legs, juxtaposed with a full bust. This creates a striking and memorable proportional contrast that is both bold and playful.")
+            Map.entry("Column", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a silhouette build which is a chic and modelesque Column. Bust, waist, and hips are beautifully aligned with minimal differentiation, creating a strong, linear frame. This balanced, athletic line is a versatile canvas, perfect for architectural shapes, dramatic drapes, and embracing bold, oversized styles"),
+            Map.entry("Cornet Silhouette", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a Cornet Silhouette build, which is an especially pronounced hourglass figure. While bust and hips are in beautiful balance, waist is exceptionally defined. This creates a striking, vintage-inspired curve that is powerful and incredibly rare."),
+            Map.entry("Teardrop", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a beautiful Teardrop. Proportions feature elegantly defined shoulders and a slender upper body that gracefully widens to fullest point at the hips. This creates a strong, grounded, and feminine silhouette with a naturally low center of gravity."),
+            Map.entry("Athletic Frame", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a powerful Athletic Frame. This silhouette is defined by strong, broad shoulders and a fuller bust that tapers to a leaner lower body. Dynamic 'V' shape is celebrated for its commanding presence and is a testament to strength and vitality."),
+            Map.entry("Lollipop Silhouette", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a proportions that align with the Lollipop Silhouette, a distinctive shape celebrated in high-fashion. It's characterized by a slender frame with lean hips and long legs, juxtaposed with a full bust. This creates a striking and memorable proportional contrast that is both bold and playful.")
     );
 
     public static final Map<String, String> MODIFIER_DESCRIPTIONS = Map.of(
@@ -86,7 +89,7 @@ public class PromptGenerator {
     }
 
     private String getBuild(final int height, final int waist) {
-        double waistToHeightRatio = (double) height / waist;
+        double waistToHeightRatio = (double) waist / height;
         if (waistToHeightRatio < 0.41) {
             return "Very Slender";
         } else if (waistToHeightRatio < 0.46) {
@@ -109,7 +112,7 @@ public class PromptGenerator {
         double bustToHipRatio = (double) bust / hip;
         double waistToBustRatio = (double) waist / bust;
         double waistToHipRatio = (double) waist / hip;
-        double hipToBustRatio = (double) bust / hip;
+        double hipToBustRatio = (double) hip / bust;
 
         if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio >= 0.90) {
             return "Column";
@@ -169,15 +172,16 @@ public class PromptGenerator {
 
         String shapeDescription = SHAPE_DESCRIPTIONS.get(getShape(userProfile.getChestSize(),
                         userProfile.getWaistSize(), userProfile.getHipSize()))
-                .replace("GENDER_POSSESSIVE_ADJECTIVE_PRONOUN",
+                .replace("[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN]",
                         GENDER_POSSESSIVE_ADJECTIVE_PRONOUNS.get(userProfile.getGender()));
 
         String modifierDescription = MODIFIER_DESCRIPTIONS.get(getHeightDescription(userProfile.getHeight()))
                 .replace("[GENDER_SUBJECT_PRONOUN]", GENDER_SUBJECT_PRONOUNS.get(userProfile.getGender()));
 
-        String bodyProfile = String.format("%s, %s, %s", buildDescription, shapeDescription, modifierDescription);
+        String bodyProfile = String.format("%s\n%s\n%s\n", buildDescription, shapeDescription, modifierDescription);
 
         return PROMPT_FORMAT
+                .replace("[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN]", GENDER_SUBJECT_PRONOUNS.get(userProfile.getGender()))
                 .replace("[BODY_PROFILE]", bodyProfile)
                 .replace("[HAIR_LENGTH]", userProfile.getHairLength())
                 .replace("[HAIR_TYPE]", userProfile.getHairTexture())

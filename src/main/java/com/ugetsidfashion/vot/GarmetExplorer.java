@@ -5,6 +5,8 @@ import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Component
 public class GarmetExplorer {
+    private static final Logger logger = LoggerFactory.getLogger(GarmetExplorer.class);
+
     @Value("${gemini.model.name}")
     private String geminiModel;
 
@@ -27,6 +31,8 @@ public class GarmetExplorer {
     public byte[] tryOn(final byte[] inputGarmentImage, final String mimeType, final UserProfile userProfile) {
         // Generate the prompt based on the user profile
         String prompt = promptGenerator.generatePrompt(userProfile);
+
+        logger.info("Garmet Explorer prompt: {}", prompt);
 
         // Call gemini API to process the image with the prompt
         Content requestContent = Content.fromParts(
