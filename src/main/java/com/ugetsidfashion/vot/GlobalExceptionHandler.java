@@ -12,18 +12,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ServerErrorException;
 
 import java.util.Collections;
-import java.util.List;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
     Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
-    @ExceptionHandler(VotException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ResponseEntity<?> handleUserAlreadyExists(VotException ex) {
-        return ResponseEntity.badRequest().body(Collections.singletonMap("non_field_errors", List.of(ex.getMessage())));
-    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -33,7 +25,7 @@ public class GlobalExceptionHandler {
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage())
         );
-        return ResponseEntity.badRequest().body(Collections.singletonMap("field_errors", errors));
+        return ResponseEntity.badRequest().body(Collections.singletonMap("errors", errors));
     }
 
     @ExceptionHandler(ServerErrorException.class)
