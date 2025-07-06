@@ -7,7 +7,7 @@ import java.util.Map;
 @Component
 public class PromptGenerator {
     public static final String PROMPT_FORMAT = """
-            A photorealistic, full-body fashion Mannequin. The model is in a minimal studio with a soft, neutral grey background.
+            Generate a photorealistic image of full-body fashion Mannequin. The model is in a minimal studio with a soft, neutral grey background.
             The character model's form must be rendered with strict adherence to the following physical parameters:
             [BODY_PROFILE]. The mannequin has [HAIR_LENGTH], [HAIR_TYPE], [HAIR_COLOUR] hair. The hairstyle is elegant and
             styled to complement the garment. The mannequin has [SKIN_COLOUR] skin colour. The primary task is to realistically
@@ -38,23 +38,23 @@ public class PromptGenerator {
             "Slender", "[GENDER_SUBJECT_PRONOUN] has a slender build, with a lean and streamlined frame.",
             "Average", "[GENDER_SUBJECT_PRONOUN] has a balanced, average build, with moderate proportions throughout her frame.",
             "Slightly Full", "[GENDER_SUBJECT_PRONOUN] has a slightly full build, characterized by a softer frame with gentle curves.",
-            "Full-Figured", "[GENDER_SUBJECT_PRONOUN] has a full-figured build, characterized by a soft, substantial frame with prominent and rounded curves.",
-            "Column", "[GENDER_SUBJECT_PRONOUN] has a silhouette build which is a chic and modelesque Column. Bust, waist, and hips are beautifully aligned with minimal differentiation, creating a strong, linear frame. This balanced, athletic line is a versatile canvas, perfect for architectural shapes, dramatic drapes, and embracing bold, oversized styles",
-            "Cornet Silhouette", "[GENDER_SUBJECT_PRONOUN] has a Cornet Silhouette build, which is an especially pronounced hourglass figure. While bust and hips are in beautiful balance, waist is exceptionally defined. This creates a striking, vintage-inspired curve that is powerful and incredibly rare.",
-            "Teardrop", "[GENDER_SUBJECT_PRONOUN] build is a beautiful Teardrop. Proportions feature elegantly defined shoulders and a slender upper body that gracefully widens to fullest point at the hips. This creates a strong, grounded, and feminine silhouette with a naturally low center of gravity.",
-            "Athletic Frame", "[GENDER_SUBJECT_PRONOUN] has a powerful Athletic Frame. This silhouette is defined by strong, broad shoulders and a fuller bust that tapers to a leaner lower body. Dynamic 'V' shape is celebrated for its commanding presence and is a testament to strength and vitality.",
-            "Lollipop Silhouette", "[GENDER_SUBJECT_PRONOUN] has proportions that align with the Lollipop Silhouette, a distinctive shape celebrated in high-fashion. It's characterized by a slender frame with lean hips and long legs, juxtaposed with a full bust. This creates a striking and memorable proportional contrast that is both bold and playful."
+            "Full-Figured", "[GENDER_SUBJECT_PRONOUN] has a full-figured build, characterized by a soft, substantial frame with prominent and rounded curves."
     );
 
-    public static final Map<String, String> SHAPE_DESCRIPTIONS = Map.of(
-            "Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a classic 'Hourglass', defined by a narrow waist with bust and hip measurements that are nearly identical, creating a balanced and symmetrical curved silhouette.",
-            "Top Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Top Hourglass', with a full bust and a defined, narrow waist. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] hips are slightly narrower than her bust.",
-            "Bottom Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Bottom Hourglass', with full hips and a defined, narrow waist. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] bust is slightly narrower than her hips.",
-            "Pear (Triangle)", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Pear' (or Triangle), defined by hips that are structurally wider than her bust and shoulders. She has a defined waist that sits above her fuller hips.",
-            "Apple (Inverted Triangle)", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is an 'Apple' (or Inverted Triangle), defined by a bust and torso that are broader than her hips, with less waist definition. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] legs are often a primary feature.",
-            "Rectangle", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Rectangle', characterized by bust, waist, and hip measurements that are relatively similar, creating a straight, athletic silhouette with minimal waist definition.",
-            "Diamond", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Diamond', characterized by hips that are broader than the shoulders and a waist that is the fullest point of the torso.",
-            "Spoon", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Spoon', similar to a Pear but characterized by a distinct 'shelf' where the hips extend from a defined waist."
+    public static final Map<String, String> SHAPE_DESCRIPTIONS = Map.ofEntries(
+            Map.entry("Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a classic 'Hourglass', defined by a narrow waist with bust and hip measurements that are nearly identical, creating a balanced and symmetrical curved silhouette."),
+            Map.entry("Top Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Top Hourglass', with a full bust and a defined, narrow waist. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] hips are slightly narrower than her bust."),
+            Map.entry("Bottom Hourglass", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Bottom Hourglass', with full hips and a defined, narrow waist. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] bust is slightly narrower than her hips."),
+            Map.entry("Pear (Triangle)", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Pear' (or Triangle), defined by hips that are structurally wider than her bust and shoulders. She has a defined waist that sits above her fuller hips."),
+            Map.entry("Apple (Inverted Triangle)", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is an 'Apple' (or Inverted Triangle), defined by a bust and torso that are broader than her hips, with less waist definition. [GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] legs are often a primary feature."),
+            Map.entry("Rectangle", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Rectangle', characterized by bust, waist, and hip measurements that are relatively similar, creating a straight, athletic silhouette with minimal waist definition."),
+            Map.entry("Diamond", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Diamond', characterized by hips that are broader than the shoulders and a waist that is the fullest point of the torso."),
+            Map.entry("Spoon", "[GENDER_POSSESSIVE_ADJECTIVE_PRONOUN] geometric shape is a 'Spoon', similar to a Pear but characterized by a distinct 'shelf' where the hips extend from a defined waist."),
+            Map.entry("Column", "[GENDER_SUBJECT_PRONOUN] geometric shape is a silhouette build which is a chic and modelesque Column. Bust, waist, and hips are beautifully aligned with minimal differentiation, creating a strong, linear frame. This balanced, athletic line is a versatile canvas, perfect for architectural shapes, dramatic drapes, and embracing bold, oversized styles"),
+            Map.entry("Cornet Silhouette", "[GENDER_SUBJECT_PRONOUN] geometric shape is a Cornet Silhouette build, which is an especially pronounced hourglass figure. While bust and hips are in beautiful balance, waist is exceptionally defined. This creates a striking, vintage-inspired curve that is powerful and incredibly rare."),
+            Map.entry("Teardrop", "[GENDER_SUBJECT_PRONOUN] geometric shape is a beautiful Teardrop. Proportions feature elegantly defined shoulders and a slender upper body that gracefully widens to fullest point at the hips. This creates a strong, grounded, and feminine silhouette with a naturally low center of gravity."),
+            Map.entry("Athletic Frame", "[GENDER_SUBJECT_PRONOUN] geometric shape is a powerful Athletic Frame. This silhouette is defined by strong, broad shoulders and a fuller bust that tapers to a leaner lower body. Dynamic 'V' shape is celebrated for its commanding presence and is a testament to strength and vitality."),
+            Map.entry("Lollipop Silhouette", "[GENDER_SUBJECT_PRONOUN] geometric shape is a proportions that align with the Lollipop Silhouette, a distinctive shape celebrated in high-fashion. It's characterized by a slender frame with lean hips and long legs, juxtaposed with a full bust. This creates a striking and memorable proportional contrast that is both bold and playful.")
     );
 
     public static final Map<String, String> MODIFIER_DESCRIPTIONS = Map.of(

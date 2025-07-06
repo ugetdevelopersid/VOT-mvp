@@ -5,12 +5,16 @@ import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class GarmetExplorer {
+    @Value("${gemini.model.name}")
+    private String geminiModel;
+
     private final PromptGenerator promptGenerator;
 
     private final Client geminiClient;
@@ -36,7 +40,7 @@ public class GarmetExplorer {
 
         // Generate the content using the gemini client
         GenerateContentResponse response = geminiClient.models.generateContent(
-                "gemini-2.0-flash-preview-image-generation",
+                geminiModel,
                 requestContent,
                 config
         );
