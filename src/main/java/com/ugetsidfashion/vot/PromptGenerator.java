@@ -38,7 +38,12 @@ public class PromptGenerator {
             "Slender", "[GENDER_SUBJECT_PRONOUN] has a slender build, with a lean and streamlined frame.",
             "Average", "[GENDER_SUBJECT_PRONOUN] has a balanced, average build, with moderate proportions throughout her frame.",
             "Slightly Full", "[GENDER_SUBJECT_PRONOUN] has a slightly full build, characterized by a softer frame with gentle curves.",
-            "Full-Figured", "[GENDER_SUBJECT_PRONOUN] has a full-figured build, characterized by a soft, substantial frame with prominent and rounded curves."
+            "Full-Figured", "[GENDER_SUBJECT_PRONOUN] has a full-figured build, characterized by a soft, substantial frame with prominent and rounded curves.",
+            "Column", "[GENDER_SUBJECT_PRONOUN] has a silhouette build which is a chic and modelesque Column. Bust, waist, and hips are beautifully aligned with minimal differentiation, creating a strong, linear frame. This balanced, athletic line is a versatile canvas, perfect for architectural shapes, dramatic drapes, and embracing bold, oversized styles",
+            "Cornet Silhouette", "[GENDER_SUBJECT_PRONOUN] has a Cornet Silhouette build, which is an especially pronounced hourglass figure. While bust and hips are in beautiful balance, waist is exceptionally defined. This creates a striking, vintage-inspired curve that is powerful and incredibly rare.",
+            "Teardrop", "[GENDER_SUBJECT_PRONOUN] build is a beautiful Teardrop. Proportions feature elegantly defined shoulders and a slender upper body that gracefully widens to fullest point at the hips. This creates a strong, grounded, and feminine silhouette with a naturally low center of gravity.",
+            "Athletic Frame", "[GENDER_SUBJECT_PRONOUN] has a powerful Athletic Frame. This silhouette is defined by strong, broad shoulders and a fuller bust that tapers to a leaner lower body. Dynamic 'V' shape is celebrated for its commanding presence and is a testament to strength and vitality.",
+            "Lollipop Silhouette", "[GENDER_SUBJECT_PRONOUN] has proportions that align with the Lollipop Silhouette, a distinctive shape celebrated in high-fashion. It's characterized by a slender frame with lean hips and long legs, juxtaposed with a full bust. This creates a striking and memorable proportional contrast that is both bold and playful."
     );
 
     public static final Map<String, String> SHAPE_DESCRIPTIONS = Map.of(
@@ -106,25 +111,25 @@ public class PromptGenerator {
         double waistToHipRatio = (double) waist / hip;
         double hipToBustRatio = (double) bust / hip;
 
-//        if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio >= 0.90) {
-//            return "Column";
-//        }
-//
-//        if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio < 0.65) {
-//            return "Cornet Silhouette";
-//        }
-//
-//        if (hipToBustRatio >= 1.25) {
-//            return "Teardrop";
-//        }
-//
-//        if (bustToHipRatio >= 1.20 && waistToBustRatio >= 0.75) {
-//            return "Athletic Frame";
-//        }
-//
-//        if (bustToHipRatio >= 1.20 && waist <= 75 && hip <= 95) {
-//            return "Lollipop Silhouette";
-//        }
+        if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio >= 0.90) {
+            return "Column";
+        }
+
+        if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio < 0.65) {
+            return "Cornet Silhouette";
+        }
+
+        if (hipToBustRatio >= 1.25) {
+            return "Teardrop";
+        }
+
+        if (bustToHipRatio >= 1.20 && waistToBustRatio >= 0.75) {
+            return "Athletic Frame";
+        }
+
+        if (bustToHipRatio >= 1.20 && waist <= 75 && hip <= 95) {
+            return "Lollipop Silhouette";
+        }
 
         if (bustToHipRatio >= 0.95 && bustToHipRatio <= 1.05 && waistToHipRatio < 0.75) {
             return "Hourglass";
