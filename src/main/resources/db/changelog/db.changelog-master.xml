@@ -27,6 +27,9 @@
             <column name="waist_size" type="int">
                 <constraints nullable="false" />
             </column>
+            <column name="hip_size" type="int">
+                <constraints nullable="false" />
+            </column>
             <column name="skin_tone" type="varchar(50)">
                 <constraints nullable="false" />
             </column>
@@ -34,12 +37,15 @@
                 <constraints nullable="false" />
             </column>
             <column name="face_shape" type="varchar(50)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="hair_length" type="varchar(50)">
                 <constraints nullable="false" />
             </column>
             <column name="hair_texture" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hair_colour" type="varchar(50)">
                 <constraints nullable="false" />
             </column>
         </createTable>

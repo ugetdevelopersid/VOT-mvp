@@ -27,23 +27,28 @@ public class UserProfile {
 
     @Column(nullable = false)
     @NotNull
-    @Min(0)
+    @Min(1)
     private int age;
 
     @Column(nullable = false)
     @NotNull
-    @Min(0)
+    @Min(1)
     private int height;
 
     @Column(nullable = false)
     @NotNull
-    @Min(0)
+    @Min(1)
     private int chestSize;
 
     @Column(nullable = false)
     @NotNull
-    @Min(0)
+    @Min(1)
     private int waistSize;
+
+    @Column(nullable = false)
+    @NotNull
+    @Min(1)
+    private int hipSize;
 
     @Column(nullable = false)
     @NotNull
@@ -55,8 +60,6 @@ public class UserProfile {
     @Size(max = 20)
     private String bodySize;
 
-    @Column(nullable = false)
-    @NotNull
     @Size(max = 20)
     private String faceShape;
 
@@ -69,6 +72,11 @@ public class UserProfile {
     @NotNull
     @Size(max = 20)
     private String hairTexture;
+
+    @Column(nullable = false)
+    @NotNull
+    @Size(max = 20)
+    private String hairColour;
 
     public UserProfile() {
     }
@@ -129,6 +137,14 @@ public class UserProfile {
         this.waistSize = waistSize;
     }
 
+    public int getHipSize() {
+        return hipSize;
+    }
+
+    public void setHipSize(int hipSize) {
+        this.hipSize = hipSize;
+    }
+
     public String getSkinTone() {
         return skinTone;
     }
@@ -167,5 +183,13 @@ public class UserProfile {
 
     public void setHairTexture(String hairTexture) {
         this.hairTexture = hairTexture;
+    }
+
+    public String getHairColour() {
+        return hairColour;
+    }
+
+    public void setHairColour(String hairColour) {
+        this.hairColour = hairColour;
     }
 }
